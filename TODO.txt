@@ -1,0 +1,15 @@
+Here is what still needs to be done:
+ 
+DONE - height box does not allow inches
+DONE - can't tab between large boxes
+DONE - selecting Lift or Hill in Location box should select same in Number of Times box
+DONE - need separate number box for Today and Prior in Number of Times field
+DONE - If Nub's is selected in rental equipment box should fill in Nub's address
+ 
+Upon printing completed report:
+DONE - slope name does not print out in location box
+DONE - in the Transportation & Destination, site conditions boxes the responses are not spaced correctly
+DONE - need email of injured box
+DONE - in the equipment box under Owner the words are not spaced correctly
+DONE - in the Injury Zone box the words lower leg are not spaced correctly
+DONE - in the Patroller's box no names print out

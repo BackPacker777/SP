@@ -1,0 +1,12 @@
+Content-Type: text/html; charset=ISO-8859-1
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Nubs Nob Incident Print Report</title>
+        <link href="../css/result.css" rel="stylesheet">
+        <script src="../scripts/result.js"></script>
+    </head>
+
+    <body>

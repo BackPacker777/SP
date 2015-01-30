@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <!--
+            AUTHOR: HB
+            VERSION: 1.0
+            CREATED: 1.24.2013
+            PURPOSE: Incident Form
+        -->
+        <title>Nub's Nob Ski Patrol Incident Form</title>
+        <link href="css/style.css" rel="stylesheet">
+        <script src="scripts/jquery-1.7.2.min.js"></script>
+        <script src="scripts/modernizr.js"></script>
+        <script src="scripts/main.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <h1 id="masthead">Nub's Nob Incident Form</h1>
+        </header>
+        <form id="incidentForm" name="incidentForm" action="cgi/main.pl" method="post">
+            <input type="hidden" name="hillName" value=""/>
+            <input type="hidden" name="liftName" value=""/>
+            <input type="hidden" name="injuryLocName" value=""/>
+            <fieldset id="dateTime">
+                <legend class="legend">Date&amp; Time</legend>
+                <input name="day" id="day" class="numLine" required type="text">
+                <input name="date" id="date" class="numLine" required type="text">
+                <label for="time">Incident Time:</label>
+                <input name="incidentTime" class="line" required type="time">
+            </fieldset>
+            <br>
+            <fieldset id="personalInfo">
+                <legend class="legend">Injured Person</legend>
+                <input name="lastName" id="lastName" class="line" required placeholder="Last Name" type="text">
+                <input name="firstName" id="firstName" class="line" required placeholder="First Name" type="text">
+                <label for="sex">Gender:</label>
+                <input class="radio" name="sex" id="sex" value="Female" required type="radio">Female
+                <input class="radio" name="sex" id="sex" value="Male" required type="radio">Male
+                <label for="dob">DOB:</label>
+                <input name="dob" id="dob" class="line" required type="date">
+                <label for="age">AGE:</label>
+                <span id="age"></span>
+                <input name="height" id="height" class="numLine" required placeholder="Height" type="number">
+                <input name="weight" id="height" class="numLine" required placeholder="Weight" type="number">
+                <input name="email" id="email" class="line" type="email" placeholder="Email" required/>
+                <br>
+                <input name="street" id="street" class="line" required placeholder="Street number" type="text">
+                <input name="city" id="city" class="line" required placeholder="City" type="text">
+                <select name="state" id="state" class="select" required>
+                    <option value="" disabled selected>ST</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="DC">DC</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                </select>
+                <input name="zipCode" id="zipCode" class="numLine" required placeholder="Zip code" type="number">
+                <input name="homePhoneNum" id="homePhoneNum" class="numLine" placeholder="Home phone" type="tel"><!--pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}'-->
+                <input name="cellPhoneNum" id="cellPhoneNum" class="numLine" placeholder="Cell phone" type="tel"><!--pattern='[\(]\d{3}[\)]\d{3}[\-]\d{4}'-->
+                <input name="occupation" id="occupation" class="line" required placeholder="Occupation" type="text">
+            </fieldset>
+            <br>
+            <fieldset id="locations">
+                <legend class="legend">Location</legend>
+                <input class="radio" name="location" id="location" value="lift" required type="radio">Lift
+                <input class="radio" name="location" id="location" value="onHill" required type="radio">On Hill
+                <input class="radio" name="location" id="location" value="premise" required type="radio">Premise
+                <span id="lifts"></span>
+                <span id="hills"></span>
+                <label for="difficulty">Difficulty:</label><span id="difficulty"></span>
+                <br>
+                <textarea name="specificLocation" class="smallBox" placeholder="Describe specific location" required ></textarea>
+            </fieldset>
+            <br>
+            <fieldset id="history">
+                <legend class="legend">Skiing History</legend>
+                <label for="ability">Ability:</label>
+                <input class="radio" name="ability" value="beginner" required type="radio">Beginner
+                <input class="radio" name="ability" value="intermediate" required type="radio">Intermediate
+                <input class="radio" name="ability" value="expert" required type="radio">Expert
+                <input class="radio" name="ability" value="na" required type="radio">Not Applicable
+                <label for="inLesson">In Lesson?</label>
+                <input class="radio" name="inLesson" value="Yes" required type="radio">Yes
+                <input class="radio" name="inLesson" value="No" required type="radio">No
+                <span id="instYes"></span>
+                <br>
+                <label for="numTimes">Number of times on?</label>
+                <input class="radio" name="numTimes" value="hill" required type="radio">Hill
+                <input class="radio" name="numTimes" value="lift" required type="radio">Lift
+                <input class="radio" name="numTimes" value="other" required type="radio">Other
+                <input name="numOther" class="line" placeholder="Other Location?" type="text">
+                <input class="radio" name="numTimesLoc" value="today" required type="radio">Today
+                <input class="line" type="number" name="qtyTimesToday"/>
+                <input class="radio" name="numTimesLoc" value="prior" required type="radio">Prior
+                <input name="qtyTimes" class="line" type="number">
+                <br>
+                <label for="equipmentRemoval">Equipment Removed By:</label>
+                <input class="radio" name="equipmentRemoval" value="fall" required type="radio">Fall
+                <input class="radio" name="equipmentRemoval" value="injured" required type="radio">Injured
+                <input class="radio" name="equipmentRemoval" value="patrol" required type="radio">Ski Patrol
+                <input class="radio" name="equipmentRemoval" value="other" required type="radio">Other
+            </fieldset>
+            <br>
+            <fieldset id="patientHistory">
+                <legend>Patient History</legend>
+                <textarea name="priorInjury" class="smallBox" placeholder="Describe prior injury/illness"></textarea>
+                <br>
+                <input name="yearInjured" class="line" autofocus="" placeholder="Year injured?" type="number">
+                <label for="correctiveLenses">Corrective Lenses?</label>
+                <input class="radio" required name="correctiveLenses" id="correctiveLenses" value="yes" type="radio">Yes
+                <input class="radio" required name="correctiveLenses" id="correctiveLenses" value="no" type="radio">No
+                <div id="lensesYes"></div>
+                <textarea name="meds" class="smallBox" placeholder="List any medications taken"></textarea>
+                <br>
+                <label for="healthInsurance">Health Insurance?</label>
+                <input class="radio" required name="healthInsurance" value="yes" type="radio">Yes
+                <input class="radio" required name="healthInsurance" value="no" type="radio">No
+                <input name="ticketType" class="line" required placeholder="Ticket Type" type="text">
+                <input name="group" class="line" required placeholder="Group" type="text">
+                <br>
+                <textarea name="allergies" class="smallBox" placeholder="Describe allergies/alerts"></textarea>
+            </fieldset>
+            <br>
+            <fieldset id="equipment">
+                <legend>Equipment</legend>
+                <input type="radio" class="radio" required name="equipmentType" value="alpine">Alpine
+                <input type="radio" class="radio" required name="equipmentType" value="nordic">Nordic
+                <input type="radio" class="radio" required name="equipmentType" value="snowboard">Snowboard
+                <input type="radio" class="radio" required name="equipmentType" value="other">Other
+                <input name="otherEquipment" class="line" type="text" placeholder="Other type">
+                <br>
+                <input type="radio" class="radio" required name="owner" value="owned">Owned
+                <input type="radio" class="radio" required name="owner" value="areaRental">Area Rental
+                <input type="radio" class="radio" required name="owner" value="otherRental">Other Rental
+                <input type="radio" class="radio" required name="owner" value="borrowed">Borrowed
+                <input type="radio" class="radio" required name="owner" value="demo">Demo
+                <br>
+                <input name="bindingMake" class="line" type="text" placeholder="Binding Make">
+                <input name="bindingModel" class="line" type="text" placeholder="Binding Model">
+                <br>
+                <span id="rentalEquip"></span>
+                <br>
+                <label for="helmet">Helmet Worn?</label>
+                <input type="radio" class="radio" required name="helmet" id="helmet" value="yes">Yes
+                <input type="radio" class="radio" required name="helmet" id="helmet" value="no">No
+                <div id="helmetYes"></div>
+            </fieldset>
+            <br>
+            <fieldset id="incidentDescription">
+                <legend>Incident Description</legend>
+                <textarea id="incidentDescription" name="incidentDescription" class="smallBox" placeholder="Describe the incident"></textarea>
+            </fieldset>
+            <br>
+            <fieldset id="injury">
+                <legend>Probable Injury</legend>
+                <input type="checkbox" class="checkbox" name="injury" value="fracture">Fracture
+                <input type="checkbox" class="checkbox" name="injury" value="puncture">Puncture/Laceration
+                <input type="checkbox" class="checkbox" name="injury" value="abrasion">Abrasion
+                <input type="checkbox" class="checkbox" name="injury" value="dislocation">Dislocation
+                <input type="checkbox" class="checkbox" name="injury" value="sprain">Sprain/Strain
+                <input type="checkbox" class="checkbox" name="injury" value="bruise">Bruise/Contusion
+                <input type="checkbox" class="checkbox" name="injury" value="concussion">Concussion
+                <input type="checkbox" class="checkbox" name="injury" value="frostbite">Frostbite
+                <br>
+                <input type="checkbox" class="checkbox" name="injury" value="burn">Burn
+                <input type="checkbox" class="checkbox" name="injury" value="ligament">Torn Ligament/Tendon
+                <input type="checkbox" class="checkbox" name="injury" value="other">Other:
+                <input name="injuryOther" class="line" type="text"placeholder="Other">
+            </fieldset>
+            <br>
+            <fieldset id="injuryZone">
+                <legend>Injury Zone</legend>
+                <input type="checkbox" class="checkbox" name="injuryLoc" >Left
+                <input type="checkbox" class="checkbox" name="injuryLoc" >Right
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Both Left/Right"> Both Left/Right
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Posterior" >Posterior
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Anterior" >Anterior
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Both Posterior/Anterior" >Both Posterior/Anterior
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Multiple" >Multiple
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Upper Leg" >Upper Leg
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Lower Leg" >Lower Leg
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Knee" >Knee
+                <br>
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Ankle" >Ankle
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Foot" >Foot
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Hip" >Hip
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Abdomen" >Abdomen
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Chest" >Chest
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Back" >Back
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Neck" >Neck
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Shoulder" >Shoulder
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Arm" >Arm
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Wrist" >Wrist
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Hand" >Hand
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Thumb" >Thumb
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Head" >Head
+                <br>
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Face" >Face
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Eye" >Eye
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Nose" >Nose
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Mouth" >Mouth
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Teeth" >Teeth
+                <input type="checkbox" class="checkbox" name="injuryLoc" value="Other" >Other:
+                <input name="injuryLocOther" class="line" type="text"placeholder="Other">
+            </fieldset>
+            <br>
+            <fieldset id="firstAid">
+                <legend>First Aid Rendered</legend>
+                <textarea name="hillFirstAid" class="smallBox" placeholder="On the hill"></textarea>
+                <textarea name="patrolRoomAid" class="smallBox" placeholder="In the patrol room"></textarea>
+            </fieldset>
+            <br>
+            <fieldset id="patrollers">
+                <legend>Patrollers</legend>
+                <label for="scenePatrollers">At Scene?</label>
+                <span id="scenePatrollers"></span>
+                <label for="transportingPatrollers">Transporting?</label>
+                <span id="transportingPatrollers"></span>
+                <label for="aidRoomPatrollers">In first aid room?</label>
+                <span id="aidRoomPatrollers"></span>
+            </fieldset>
+            <br>
+            <fieldset id="transportDestination">
+                <legend>Transport & Destination</legend>
+                <label for="arrival">How arrived patrol room?</label>
+                <input type="radio" class="radio" required name="arrival" id="arrival" value="arrivePatrol">Patrol/Toboggan
+                <input type="radio" class="radio" required name="arrival" id="arrival" value="arriveWalk">Walk-in
+                <input type="radio" class="radio" required name="arrival" id="arrival" value="arriveOther">Other:
+                <input name="arivalOther" class="line" type="text"placeholder="Other">
+                <label for="leave">How left patrol room?</label>
+                <input type="radio" class="radio" required name="leave" id="leave" value="leaveAmbulance">Ambulance
+                <input type="radio" class="radio" required name="leave" id="leave" value="leaveCar">Car/Bus
+                <input type="radio" class="radio" required name="leave" id="leave" value="leaveOther">Other:
+                <input name="leaveOther" class="line" type="text"placeholder="Other">
+                <br>
+                <label for="dest">Destination?</label>
+                <input type="radio" class="radio" required name="dest" id="dest" value="destHome">Home
+                <input type="radio" class="radio" required name="dest" id="dest" value="destLodge">Lodge
+                <input type="radio" class="radio" required name="dest" id="dest" value="destSki">Return Skiing
+                <input type="radio" class="radio" required name="dest" id="dest" value="destFacility">Medical Facility:
+                <input name="destFacility" class="line" type="text" placeholder="Medical Facility">
+            </fieldset>
+            <br>
+            <fieldset id="conditions">
+                <legend>Site Conditions</legend>
+                <label for="sceneSurface">Surface at scene?</label>
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="powder">Powder
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="packedPowder">Packed powder
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="hardPacked">Hard packed
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="variable">Variable
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="corn">Corn
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="granular">Granular
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="wet">Wet
+                <input type="checkbox" class="checkbox" name="sceneSurface" value="other">Other:
+                <input name="sceneSurfaceOther" class="line" type="text" required placeholder="Other">
+                <br>
+                <label for="visibility">Visibility?</label>
+                <input type="checkbox" class="checkbox" name="visibility" value="clear">Clear
+                <input type="checkbox" class="checkbox" name="visibility" value="overcast">Overcast
+                <input type="checkbox" class="checkbox" name="visibility" value="fog">Fog
+                <input type="checkbox" class="checkbox" name="visibility" value="snowing">Snowing
+                <input type="checkbox" class="checkbox" name="visibility" value="raining">Raining
+                <input type="checkbox" class="checkbox" name="visibility" value="snowmaking">Snowmaking near scene
+                <br>
+                <label for="temperature">Temperature?</label>
+                <input type="radio" class="radio" required name="temperature" id="temperature" value="belowZero">Below 0
+                <input type="radio" class="radio" required name="temperature" id="temperature" value="0_32">0 - 32
+                <input type="radio" class="radio" required name="temperature" id="temperature" value="above32">Above 32
+                <br>
+                <label for="wind">Wind?</label>
+                <input type="radio" class="radio" required name="wind" id="wind" value="calm">Calm
+                <input type="radio" class="radio" required name="wind" id="wind" value="moderate">Moderate
+                <input type="radio" class="radio" required name="wind" id="wind" value="high">High
+            </fieldset>
+            <br>
+            <fieldset id="witnesses">
+                <legend>Witnesses</legend>
+                <div id="W1">
+                    <input name="lastNameW1" class="line" type="text" placeholder="Last Name">
+                    <input name="firstNameW1" class="line" type="text" placeholder="First Name">
+                    <input name="streetW1" class="line" type="text" placeholder="Street number">
+                    <input name="cityW1" class="line" type="text" placeholder="City">
+                    <select name="stateW1" id="stateW1" class="select">
+                    <option value="" disabled selected>ST</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="DC">DC</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                    <input name="zipCodeW1" class="numLine" type="number" placeholder="Zip code">
+                    <input name="homePhoneNumW1" class="numLine" type="tel" placeholder="Home phone number">
+                    <input name="cellPhoneNumW1" class="numLine" type="tel" placeholder="Cell number">
+                </div>
+                <div id="W2">
+                    <input name="lastNameW2" class="line" type="text" placeholder="Last Name">
+                    <input name="firstNameW2" class="line" type="text" placeholder="First Name">
+                    <input name="streetW2" class="line" type="text" placeholder="Street number">
+                    <input name="cityW2" class="line" type="text" placeholder="City">
+                    <select name="stateW2" id="stateW2" class="select">
+                    <option value="" disabled selected>ST</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="DC">DC</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                    <input name="zipCodeW2" class="numLine" type="number" placeholder="Zip code">
+                    <input name="homePhoneNumW2" class="numLine" type="tel" placeholder="Home phone number">
+                    <input name="cellPhoneNumW2" class="numLine" type="tel" placeholder="Cell number">
+                </div>
+                <div id="W3">
+                    <input name="lastNameW3" class="line" type="text" placeholder="Last Name">
+                    <input name="firstNameW3" class="line" type="text" placeholder="First Name">
+                    <input name="streetW3" class="line" type="text" placeholder="Street number">
+                    <input name="cityW3" class="line" type="text" placeholder="City">
+                    <select name="stateW3" id="stateW3" class="select">
+                    <option value="" disabled selected>ST</option>
+                    <option value="AL">AL</option>
+                    <option value="AK">AK</option>
+                    <option value="AZ">AZ</option>
+                    <option value="AR">AR</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DE">DE</option>
+                    <option value="DC">DC</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="IA">IA</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="ME">ME</option>
+                    <option value="MD">MD</option>
+                    <option value="MA">MA</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MS">MS</option>
+                    <option value="MO">MO</option>
+                    <option value="MT">MT</option>
+                    <option value="NE">NE</option>
+                    <option value="NV">NV</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NM">NM</option>
+                    <option value="NY">NY</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VT">VT</option>
+                    <option value="VA">VA</option>
+                    <option value="WA">WA</option>
+                    <option value="WV">WV</option>
+                    <option value="WI">WI</option>
+                    <option value="WY">WY</option>
+                    <input name="zipCodeW3" class="numLine" type="number" placeholder="Zip code">
+                    <input name="homePhoneNumW3" class="numLine" type="tel" placeholder="Home phone number">
+                    <input name="cellPhoneNumW3" class="numLine" type="tel" placeholder="Cell number">
+                </div>
+            </fieldset>
+            <br>
+            <fieldset id="completer">
+                <legend>Report Completion</legend>
+                <input name="completerName" id="completerName" class="line" type="text" required placeholder="Completer Name:">
+                <div id="completeDate">Date Completed:</div>
+                <input name="dateComplete" id="dateComplete" class="numLine" required type="text">
+                <input type="submit" id="completed" class="buttons" value="Completed!">
+                <input type="reset" id="reset" class="buttons" value="Reset Form">
+            </fieldset>
+        </form>
+    </body>
+</html>

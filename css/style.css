@@ -1,0 +1,271 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, img, ins, kbd, q, s, samp, small, strike, strong, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+h1 {
+	font-size: 30px;
+	text-shadow: 0.1em 0.1em 0.2em #000;
+}
+
+fieldset {
+	border: 1px solid black;
+	background-color: #8099CC;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+	width: 100%;
+	font: bold 14px "Georgia";
+	-moz-box-shadow: 0.1em 0.1em 0.2em #000;
+	-webkit-box-shadow: 0.1em 0.1em 0.2em #000;
+	box-shadow: 0.1em 0.1em 0.2em #000;
+	padding: 5px 5px 5px 5px;
+}
+
+legend {
+	font: italic bold 18px "Georgia";
+	border: 1px solid black;
+	background-color: #FF9999;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0.1em 0.1em 0.2em #000;
+	-webkit-box-shadow: 0.1em 0.1em 0.2em #000;
+	box-shadow: 0.1em 0.1em 0.2em #000;
+	padding: 2px 2px 2px 2px;
+}
+
+label {
+	text-decoration: underline;
+	margin: 0px 4px 5px 12px;
+}
+
+#incidentForm {
+	font-family: "Georgia";
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 5px;
+	padding: 20px;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	list-style: none;
+}
+
+.radio {
+	width: 20px;
+	height: 20px;
+	margin: 5px 5px 5px 5px;
+}
+
+
+.checkbox {
+	width: 1.8em;
+	height: 1.8em;
+	margin: 10px 5px 10px 5px;
+}
+
+.line {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	height: 1.8em;
+	margin: 0px 12px 5px 0px;
+}
+
+.numLine {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	height: 1.8em;
+	width: 8em;
+	margin: 0px 12px 5px 0px;
+}
+
+.select {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	font-size: 14px;
+	border-radius: 4px;
+	height: 2.4em;
+	margin: 2px 12px 5px 0px;
+}
+
+.smallBox {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	width: 80%;
+	border-radius: 4px;
+}
+
+.space {
+	margin: 0px 40px 0px 0px;
+}
+
+#age {
+	margin-right: 80px;
+}
+
+#lensesYes {
+	display: inline-block;
+}
+
+#instYes {
+	display: inline-block;
+	margin-left: 30px;
+}
+
+#helmetYes {
+	display: inline-block;
+}
+
+#helmetYes div {
+	margin-left: 40px;
+}
+
+#lensesYes div {
+	margin-left: 40px;
+}
+
+#scenePatrollers {
+	margin: 0px 15px 0px 0px;
+	display: inline-block;
+}
+
+#transportingPatrollers {
+	margin: 0px 15px 0px 0px;
+	display: inline-block;
+}
+
+#aidRoomPatrollers {
+	margin: 0px 15px 0px 0px;
+	display: inline-block;
+}
+
+#W1 {
+	position: relative;
+	width: 30%;
+	display: inline-block;
+}
+
+#W2 {
+	position: relative;
+	width: 30%;
+	display: inline-block;
+}
+
+#W3 {
+	position: relative;
+	width: 30%;
+	display: inline-block;
+}
+
+.buttons {
+	font: bold 20px "Georgia";
+	margin: 12px 20px 5px 20px;
+	height: 50px;
+	width: 150px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-moz-box-shadow: 2px 2px 2px #222;
+	-webkit-box-shadow: 2px 2px 2px #222;
+	box-shadow: 2px 2px 2px #222;
+	border-bottom: 1px solid #222;
+	cursor: pointer;
+}
+
+#completed {
+	float: left;
+}
+
+#completerName {
+	margin: 0px 40px 0px 40px;
+}
+
+#completeDate {
+	display: inline-block;
+	margin: 0px 10px 0px 0px;
+	font-size: 28px;
+}
+
+#dateComplete {
+	display: inline-block;
+	margin: 0px 0px 0px 0px;
+	font-size: 28px;
+	width: 140px;
+}
+
+#reset {
+	float: right;
+}
+
+.green {
+	background-color: #22CF00;
+}
+
+.blue {
+	background-color: #0070E8;
+}
+
+.black {
+	background-color: #363636;
+	color: #FFFFFF;
+}
+
+.brown {
+	background-color: #B08D54;
+}
+
+.yellow {
+	background-color: #ECF08D;
+}
+
+.purple {
+	background-color: #D934FA;
+}
+
+.red {
+	background-color: #FA3434;
+}
+
+.grey {
+	background-color: #C9C5C5;
+}
+
+.orange{
+	background-color: #F57B2A;
+}

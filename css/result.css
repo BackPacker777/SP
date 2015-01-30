@@ -1,0 +1,152 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, img, ins, kbd, q, s, samp, small, strike, strong, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.container {
+	position: absolute;
+	left: 0px;
+	height: 60px;
+	border: 1px solid black;
+}
+
+.legend {
+	width: 110px;
+	text-align: center;
+	height: 60px;
+	background-color: black;
+	color: white;
+	font: bold 12px "Georgia";
+	line-height: 60px;
+	display: inline-block;
+}
+
+.title {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}
+
+.data {
+	left: 1px;
+	width: 600px;
+	height: 100%;
+	font: 10px "Georgia";
+	display: inline-block;
+	background-color: #FFFFCC;
+	vertical-align: top;
+}
+
+.item {
+	font-weight: bold;
+}
+
+.info {
+	margin-right: 20px;
+}
+
+#masthead {
+	font: bold 20px "Georgia";
+}
+
+#locations {
+	top: 40px;
+}
+
+#personalInfo {
+	top: 104px;
+}
+
+#history {
+	top: 168px;
+}
+
+#patientHistory {
+	top: 232px;
+}
+
+#equipment {
+	top: 296px;
+}
+
+#incidentDescription {
+	top: 360px;
+}
+
+#injury {
+	top: 424px;
+}
+
+#injuryZone {
+	top: 488px;
+}
+
+#firstAid {
+	top: 552px;
+}
+
+#patrollers {
+	top: 616px;
+}
+
+#transportDestination {
+	top: 680px;
+}
+
+#conditions {
+	top: 744px;
+}
+
+#witnesses {
+	top: 808px;
+}
+
+#completer {
+	top: 872px;
+	width: 714px;
+}
+
+.innerDiv {
+	height: 100%;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#whereInjured {
+	border-right: 1px solid black;
+	font-weight: bold;
+	text-align: center;
+	line-height: 60px;
+}
+
+#whereInjuredStuff {
+
+}

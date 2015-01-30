@@ -1,0 +1,151 @@
+[% INCLUDE header.tt
+   title = 'Nubs Nob Incident Print Report'
+%]
+
+<header>
+    <h1 id="masthead">Nub's Nob Incident Report</h1>
+</header>
+<br>
+<form>
+    <fieldset>
+        <legend class="legend">Date & Time</legend>
+        <span id="day" name="day"></span>
+        <span>, </span>
+        <span id="date" name="date"></span>
+        <span id="time"> Incident Time: [% cgi.param('incidentTime') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="personalInfo">
+        <legend class="legend">Injured Person</legend>
+        <span>Name: [% cgi.param('firstName') %] [% cgi.param('lastName') %]</span>
+        <span class="leftBig">Gender: [% cgi.param('sex') %]</span>
+        <span>DOB: [% cgi.param('dob') %]</span>
+        <span class="left">Age: [% cgi.param('age') %]</span>
+        <span class="leftBig">Height: [% cgi.param('height') %]</span>
+        <span class="left">Weight: [% cgi.param('weight') %]</span>
+        <span>Address: [% cgi.param('street') %] [% cgi.param('city') %], [% cgi.param('state') %] [% cgi.param('zipCode') %]</span>
+        <span>Home phone: [% cgi.param('homePhone') %]</span>
+        <span class="left">Cell phone: [% cgi.param('cellPhone') %]</span>
+        <span class="bigLeft">Occupation: [% cgi.param('occupation') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="locations">
+        <legend class="legend">Location</legend>
+        <span>Location: [% cgi.param('location') %], [% cgi.param('hill') %][% cgi.param('lift') %]</span>
+        <span class="left">Difficulty: [% cgi.param('difficulty') %]</span>
+        <span>Specific location: [% cgi.param('specificLocation') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="history">
+        <legend class="legend">Skiing History</legend>
+        <span>Ability: [% cgi.param('ability') %]</span>
+        <span>In Lesson: [% cgi.param('inLesson') %]</span>
+        <span>Number of Times on?: [% cgi.param('numTimes') %][% cgi.param('numOther') %]</span>
+        <span>Equipment removed by: [% cgi.param('equipmentRemoval') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="patientHistory">
+        <legend class="legend">Patient History</legend>
+        <span>Prior Injury/Ilness: [% cgi.param('priorInjury') %]</span>
+        <span>Year Injured: [% cgi.param('yearInjured') %]</span>
+        <span>Corrective Lenses: [% cgi.param('correctiveLenses') %]</span>
+        <span>Worn: [% cgi.param('correctiveLensesWorn') %]</span>
+        <span>Health Insurance: [% cgi.param('healthInsurance') %]</span>
+        <span>Medications: [% cgi.param('meds') %]</span>
+        <span>Allergies/Alerts: [% cgi.param('allergies') %]</span>
+        <span>Ticket Type: [% cgi.param('ticketType') %]</span>
+        <span>Group: [% cgi.param('group') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="equipment">
+        <legend class="legend">Equipment</legend>
+                <span>Equipment Type: [% cgi.param('equipmentType') %][% cgi.param('otherEquipment') %]</span>
+                <span>Owner: [% cgi.param('owner') %]</span>
+                <span>Binding Make: [% cgi.param('bindingMake') %]</span>
+                <span>Binding Model: [% cgi.param('bindingModel') %]</span>
+                <span>Ski/Board Number: [% cgi.param('skiNum') %]</span>
+                <span>Boot Number: [% cgi.param('bootNum') %]</span>
+                <span>If Rented, Shop NAme: [% cgi.param('shopName') %]</span>
+                <span>[% cgi.param('shopStreet') %] [% cgi.param('shopCity') %] [% cgi.param('shopZipCode') %]</span>
+                <span>Helmet Worn: [% cgi.param('helmet') %]</span>
+                <span>Rental?: [% cgi.param('helmetRental') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="incidentDescription">
+        <legend class="legend">Description of Incident</legend>
+        <span>Incident Description: [% cgi.param('incidentDescription') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="injury">
+        <legend class="legend">Probable Injury</legend>
+        <span>[% cgi.param('injury') %][% cgi.param('injuryOther') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="injuryZone">
+        <legend class="legend">Injury Zone</legend>
+        <span>[% cgi.param('injuryLoc') %][% cgi.param('injuryLocOther') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="firstAid">
+        <legend class="legend">First Aid Rendered</legend>
+        <span>On the Hill: [% cgi.param('hillFirstAid') %]</span>
+        <span>In Patroll Room: : [% cgi.param('patrollRoomAid') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="patrollers">
+        <legend class="legend">Patrollers</legend>
+        <span>At Scene: [% cgi.param('') %]</span>
+        <span>Transporting: [% cgi.param('') %]</span>
+        <span>Patrol Room: [% cgi.param('') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="transportDestination">
+        <legend class="legend">Transportation & Destination</legend>
+        <span>How Arrived Patrol Room: [% cgi.param('arrival') %][% cgi.param('arriveOther') %]</span>
+        <span>How Left Patrol Room: [% cgi.param('leave') %][% cgi.param('leaveOther') %]</span>
+        <span>Destination: [% cgi.param('dest') %][% cgi.param('destFacility') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="conditions">
+        <legend class="legend">Site Conditions</legend>
+        <span>Surface at Scene: [% cgi.param('sceneSurface') %][% cgi.param('sceneSurfaceOther') %]</span>
+        <span>Visibility: [% cgi.param('visibility') %]</span>
+        <span>Temperature: [% cgi.param('temperature') %]</span>
+        <span>Wind: [% cgi.param('wind') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="witnesses">
+        <legend class="legend">Witnesses</legend>
+        <span>[% cgi.param('lastNameW1') %]</span>
+        <span>[% cgi.param('firstNameW1') %]</span>
+        <span>[% cgi.param('streetW1') %]</span>
+        <span>[% cgi.param('cityW1') %]</span>
+        <span>[% cgi.param('zipCodeW1') %]</span>
+        <span>[% cgi.param('homePhoneNumW1') %]</span>
+        <span>[% cgi.param('cellPhoneNumW1') %]</span>
+        <span>[% cgi.param('lastNameW2') %]</span>
+        <span>[% cgi.param('firstNameW2') %]</span>
+        <span>[% cgi.param('streetW2') %]</span>
+        <span>[% cgi.param('cityW2') %]</span>
+        <span>[% cgi.param('zipCodeW2') %]</span>
+        <span>[% cgi.param('homePhoneNumW2') %]</span>
+        <span>[% cgi.param('cellPhoneNumW2') %]</span>
+        <span>[% cgi.param('lastNameW3') %]</span>
+        <span>[% cgi.param('firstNameW3') %]</span>
+        <span>[% cgi.param('streetW3') %]</span>
+        <span>[% cgi.param('cityW3') %]</span>
+        <span>[% cgi.param('zipCodeW3') %]</span>
+        <span>[% cgi.param('homePhoneNumW3') %]</span>
+        <span>[% cgi.param('cellPhoneNumW3') %]</span>
+    </fieldset>
+    <br>
+    <fieldset id="completer">
+        <legend class="legend">Completer</legend>
+        <span>Report Completer Name: [% cgi.param('completerName') %]</span>
+        <br>
+        <span>Signature of Completer: _______________________________________________________________</span>
+        <span>Date Report Completed: [% cgi.param('dateComplete') %]</span>
+    </fieldset>
+</form>
+
+[% INCLUDE footer.tt %]

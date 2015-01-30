@@ -1,0 +1,275 @@
+[% INCLUDE header.tt %]
+
+<h1 id="masthead">Nub's Nob Incident Report</h1>
+<div id="headerInfo">
+    <span class="item">Day of Week: </span><span id="day" name="day" class="info"></span>
+    <span class="item">Date: </span><span id="date" name="date" class="info"></span>
+    <span id="time" class="item">Incident Time: </span><span class="info">[% cgi.param('incidentTime') %]</span>
+</div>
+
+<div id="locations" class="container">
+    <div id="locationTitle" class="legend">
+        <span class="title">LOCATION</span>
+    </div>
+    <div id="locationData" class="data">
+        
+        <div id="whereInjured" class="innerDiv">
+            [% IF cgi.param('location') == "onHill" %]
+                <span class="info">On hill: [% cgi.param("hillName") %]</span>
+            [% ELSIF cgi.param('location') == "lift" %]
+                <span class="info">On lift: [% cgi.param("liftName") %]</span>
+            [% ELSE%]
+                <span class="info">On Premise</span>
+            [% END %]
+        </div>
+        
+        <div id="whereInjuredStuff" class="innerDiv">
+            <span class="item">Specific location: </span><span class="info" id="place">[% cgi.param('hill') %][% cgi.param('lift') %][% cgi.param('specificLocation') %]</span><br/>
+            
+            [% IF cgi.param("location") == "onHill" %]
+                <span class="item">Difficulty: </span>
+                <span class="info">[% cgi.param('difficulty') %]</span>
+            [% END %]
+        </div>
+    </div>
+</div>
+
+<div id="personalInfo" class="container">
+    <div id="personalInfoTitle" class="legend">
+        <span class="title">INJURED PERSON</span>
+    </div>
+    <div id="personalInfoData" class="data">
+        <span class="item">Name: </span><span class="info">[% cgi.param('firstName') %] [% cgi.param('lastName') %]</span>
+        <span class="item">Gender: </span><span class="info">[% cgi.param('sex') %]</span>
+        <span class="item">DOB: </span><span class="info">[% cgi.param('dob') %]</span>
+        <span class="item">Age: </span><span class="info">[% cgi.param('age') %]</span>
+        <span class="item">Height: </span><span class="info">[% cgi.param('height') %]</span>
+        <span class="item">Weight: </span><span class="info">[% cgi.param('weight') %]</span>
+        <br>
+        <span class="item">Address: </span><span class="info">[% cgi.param('street') %], [% cgi.param('city') %], [% cgi.param('state') %] [% cgi.param('zipCode') %]</span>
+        <br>
+        <span class="item">Home phone: </span><span class="info">[% cgi.param('homePhoneNum') %]</span>
+        <span class="item">Cell phone: </span><span class="info">[% cgi.param('cellPhoneNum') %]</span>
+        <span class="item">Email: </span><span class="info">[% cgi.param("email") %]
+        <br>
+        <span class="item">Occupation: </span><span class="info">[% cgi.param('occupation') %]</span>
+    </div>
+</div>
+
+<div id="history" class="container">
+    <div id="Title" class="legend">
+        <span class="title">SKIING HISTORY</span>
+    </div>
+    <div id="historyData" class="data">
+        <span class="item">Ability: </span><span class="info">[% cgi.param('ability') %]</span>
+        <br/>
+        <span class="item">In Lesson: </span><span class="info">[% cgi.param('inLesson') %]</span>
+        <br/>
+        <span class="item">Number of Times on?: </span><span class="info">[% cgi.param('numTimes') %][% cgi.param('numOther') %]</span>
+        <br/>
+        <span class="item">Equipment removed by: </span><span class="info">[% cgi.param('equipmentRemoval') %]</span>
+    </div>
+</div>
+
+<div id="patientHistory" class="container">
+    <div id="Title" class="legend">
+        <span class="title">PATIENT HISTORY</span>
+    </div>
+    <div id="patientHistoryData" class="data">
+        <span class="item"></span>
+        <span class="item">Prior Injury/Ilness: </span><span class="info">[% cgi.param('priorInjury') %]</span>
+        <span class="item">Year Injured: </span><span class="info">[% cgi.param('yearInjured') %]</span>
+            [% IF cgi.param("numTimesLoc") == "today" %]
+                <span class="item">Number of Times Today: </span>
+                <span class="info">[% cgi.param("qtyTimesToday") %]</span>
+            [% ELSE %]
+                <span class="item">Number Of Times Prior: </span>
+                <span class="info">[% cgi.param("qtyTimes") %]</span>
+            [% END %]
+        <br/>
+        <span class="item">Corrective Lenses: </span><span class="info">[% cgi.param('correctiveLenses') %]</span>
+        <span class="item">Worn: </span><span class="info">[% cgi.param('correctiveLensesWorn') %]</span>
+        <br>
+        <span class="item">Health Insurance: </span><span class="info">[% cgi.param('healthInsurance') %]</span>
+        <span class="item">Medications: </span><span class="info">[% cgi.param('meds') %]</span>
+        <span class="item">Allergies/Alerts: </span><span class="info">[% cgi.param('allergies') %]</span>
+        <br/>
+        <span class="item">Ticket Type: </span><span class="info">[% cgi.param('ticketType') %]</span>
+        <span class="item">Group: </span><span class="info">[% cgi.param('group') %]</span>
+    </div>
+</div>
+
+<div id="equipment" class="container">
+    <div id="Title" class="legend">
+        <span class="title">EQUIPMENT</span>
+    </div>
+    <div id="equipmentData" class="data">
+        <span class="item">Equipment Type: </span><span class="info">[% cgi.param('equipmentType') %][% cgi.param('otherEquipment') %]</span>
+        <span class="item">Owner: </span><span class="info">[% cgi.param('owner') %]</span>
+        <span class="item">Binding Make: </span><span class="info">[% cgi.param('bindingMake') %]</span>
+        <span class="item">Binding Model: </span><span class="info">[% cgi.param('bindingModel') %]</span>
+        <br>
+        <span class="item">If Rented, Shop Name: </span><span class="info">[% cgi.param('shopName') %], [% cgi.param('shopStreet') %], [% cgi.param('shopCity') %], [% cgi.param('shopZipCode') %] </span><br/>
+        <span class="item">Ski/Board Number: </span><span class="info">[% cgi.param('skiNum') %]</span>
+        <span class="item">Boot Number: </span><span class="info">[% cgi.param('bootNum') %]</span>
+        <br>
+        <span class="item">Helmet Worn: </span><span class="info">[% cgi.param('helmet') %]</span>
+        <span class="item">Rental?: </span><span class="info">[% cgi.param('helmetRental') %]</span>
+    </div>
+</div>
+
+<div id="incidentDescription" class="container">
+    <div id="Title" class="legend">
+        <span class="title">INCIDENT DESCRIPTION</span>
+    </div>
+    <div id="incidentDescriptionData" class="data">
+        <span class="info">[% cgi.param('incidentDescription') %]</span>
+    </div>
+</div>
+
+<div id="injury" class="container">
+    <div id="Title" class="legend">
+        <span class="title">PROBABLE INJURY</span>
+    </div>
+    <div id="injuryData" class="data">
+        <span class="info">
+            [%FOREACH injury = cgi.param('injury') %]
+                [% injury %]&nbsp;&nbsp;&nbsp;&nbsp;
+            [% END %]<br/>
+            <b>Other: </b>[% cgi.param('injuryOther') %]
+        </span>
+    </div>
+</div>
+
+<div id="injuryZone" class="container">
+    <div id="Title" class="legend">
+        <span class="title">INJURY ZONE</span>
+    </div>
+    <div id="injuryZoneData" class="data">
+        [% FOREACH item = cgi.param('injuryLoc') %]
+            [% item %]&nbsp;&nbsp;&nbsp;
+        [% END %]
+        <br/>
+        <b>Other: </b> [% cgi.param('injuryLocOther') %]
+    </div>
+</div>
+
+<div id="firstAid" class="container">
+    <div id="Title" class="legend">
+        <span class="title">FIRST AID RENDERED</span>
+    </div>
+    <div id="firstAidData" class="data">
+        <span class="item">On the Hill: </span><span class="info">[% cgi.param('hillFirstAid') %]</span>
+        <br><br>
+        <span class="item">In Patrol Room: </span><span class="info">[% cgi.param('patrolRoomAid') %]</span>
+    </div>
+</div>
+
+<div id="patrollers" class="container">
+    <div id="Title" class="legend">
+        <span class="title">PATROLLERS</span>
+    </div>
+    <div id="patrollersData" class="data">
+        <span class="item">At Scene: </span><span class="info">
+            [% FOREACH item = cgi.param('scenePatrollersNames') %]
+                [% item %]&nbsp;&nbsp;&nbsp;&nbsp;
+            [% END %]
+        </span>
+        <br>
+        <span class="item">Transporting: </span><span class="info">
+            [% FOREACH item = cgi.param('transportingPatrollersNames') %]
+                [% item %]&nbsp;&nbsp;&nbsp;&nbsp;
+            [% END %]
+        </span>
+        <br>
+        <span class="item">Patrol Room: </span><span class="info">
+            [% IF cgi.param("aidRoomPatrollerNames") %]
+                [% FOREACH item = cgi.param('aidRoomPatrollersNames') %]
+                    [% item %]&nbsp;&nbsp;&nbsp;&nbsp;
+                [% END %]
+            [% ELSE %]
+                N/A
+            [% END %]
+        </span>
+    </div>
+</div>
+
+<div id="transportDestination" class="container">
+    <div id="Title" class="legend">
+        <span class="title">TRANSPORT & DESTINATION</span>
+    </div>
+    <div id="transportDestinationData" class="data">
+        <span class="item">How Arrived Patrol Room: </span><span class="info">[% cgi.param('arrival') %][% cgi.param('arriveOther') %]</span><br/>
+        <span class="item">How Left Patrol Room: </span><span class="info">[% cgi.param('leave') %][% cgi.param('leaveOther') %]</span><br/>
+        <span class="item">Destination: </span><span class="info">[% cgi.param('dest') %][% cgi.param('destFacility') %]</span><br/>
+    </div>
+</div>
+
+<div id="conditions" class="container">
+    <div id="Title" class="legend">
+        <span class="title">SITE CONDITIONS</span>
+    </div>
+    <div id="conditionsData" class="data">
+        <span class="item">Surface at Scene: </span><span class="info">[% cgi.param('sceneSurface') %]&nbsp;&nbsp;&nbsp;&nbsp;[% cgi.param('sceneSurfaceOther') %]</span><br/>
+        <span class="item">Visibility: </span><span class="info">[% cgi.param('visibility') %]</span><br/>
+        <span class="item">Temperature: </span><span class="info">[% cgi.param('temperature') %]</span><br/>
+        <span class="item">Wind: </span><span class="info">[% cgi.param('wind') %]</span><br/>
+    </div>
+</div>
+
+<div id="witnesses" class="container">
+    <div id="Title" class="legend">
+        <span class="title">WITNESSES</span>
+    </div>
+    <div id="witnessesData" class="data">
+        [% IF cgi.param("firstNameW1") %]
+            <span class="item">Witness 1: </span>
+            <span class="info">[% cgi.param('lastNameW1') %]</span>
+            <span class="info">[% cgi.param('firstNameW1') %]</span>
+            <span class="info">[% cgi.param('streetW1') %]</span>
+            <span class="info">[% cgi.param('cityW1') %]</span>
+            <span class="info">[% cgi.param('stateW1') %]</span>
+            <span class="info">[% cgi.param('zipCodeW1') %]</span>
+            <span class="info">[% cgi.param('homePhoneNumW1') %]</span>
+            <span class="info">[% cgi.param('cellPhoneNumW1') %]</span>
+        [% END %]
+        <br>
+        [% IF cgi.param("firstNameW2") %]
+            <span class="item">Witness 2: </span>
+            <span class="info">[% cgi.param('lastNameW2') %]</span>
+            <span class="info">[% cgi.param('firstNameW2') %]</span>
+            <span class="info">[% cgi.param('streetW2') %]</span>
+            <span class="info">[% cgi.param('cityW2') %]</span>
+            <span class="info">[% cgi.param('stateW2') %]</span>
+            <span class="info">[% cgi.param('zipCodeW2') %]</span>
+            <span class="info">[% cgi.param('homePhoneNumW2') %]</span>
+            <span class="info">[% cgi.param('cellPhoneNumW2') %]</span>
+        [% END %]
+        <br>
+        [% IF cgi.param("firstNameW3") %]
+            <span class="item">Witness 1: </span>
+            <span class="info">[% cgi.param('lastNameW3') %]</span>
+            <span class="info">[% cgi.param('firstNameW3') %]</span>
+            <span class="info">[% cgi.param('streetW3') %]</span>
+            <span class="info">[% cgi.param('cityW3') %]</span>
+            <span class="info">[% cgi.param('stateW3') %]</span>
+            <span class="info">[% cgi.param('zipCodeW3') %]</span>
+            <span class="info">[% cgi.param('homePhoneNumW3') %]</span>
+            <span class="info">[% cgi.param('cellPhoneNumW3') %]</span>
+        [% END %]
+
+        [% IF !cgi.param("firstNameW3") && !cgi.param("firstNameW2") && !cgi.param("firstNameW1") %]
+            <span class="item">No Witnesses</span>
+        [% END %]
+    </div>
+</div>
+
+<div id="completer" class="container">
+    <span class="item">Report Completer Name:</span><span class="info"> [% cgi.param('completerName') %]</span>
+    <span class="item">Date Report Completed:</span><span class="info"> [% cgi.param('dateComplete') %]</span>
+    <br>
+    <br>
+    <span class="item">Signature of Completer: _______________________________________________________________</span>   
+</div>
+
+[% INCLUDE footer.tt %]
